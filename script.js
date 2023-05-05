@@ -10,7 +10,7 @@ const formEl = document.querySelector("form");
 formEl.addEventListener("submit", (event) => {
     event.preventDefault();
     const cityValue = cityInputEl.value;
-    // console.log(cityValue);
+    console.log(cityValue);
     getWeatherData(cityValue);
 });
 
@@ -24,7 +24,7 @@ async function getWeatherData(cityValue) {
 
         const data = await response.json();
 
-        // console.log(data);
+        console.log(data);
 
         const temperature = Math.round(data.main.temp);
         const description = data.weather[0].description;
@@ -34,6 +34,8 @@ async function getWeatherData(cityValue) {
             `Humidity: ${data.main.humidity}`,
             `Wind speed: ${data.wind.speed}`,
         ];
+
+        weatherDataEl.querySelector(".icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">`
 
     } catch (error) {
         
